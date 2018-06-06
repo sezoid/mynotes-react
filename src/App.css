@@ -3,32 +3,10 @@ body {
 	font-family: 'Roboto', sans-serif;
 	overflow: hidden
 }
-input[type='text'], textarea {
+input, textarea {
 	appearance: none;
-	border-radius: 0
-}
-
-.Button {
-	align-self: center;
-	appearance: none;
-	background-color: rgb(29, 233, 182);
-	border-radius: 20px;
-	bottom: 16px;
-	box-shadow: 1px 2px 4px rgba(29, 233, 182, 0.12);
-	color: white;
-	cursor: pointer;
-	font-size: 14px;
-	line-height: 40px;
-	max-width: 300px;
-	padding: 0 16px;
-	position: fixed;
-	text-align: center;
-	text-transform: uppercase;
-	transition: background-color 0.25s, box-shadow 0.25s;
-	z-index: 2
-}
-.Button:hover {
-	box-shadow: 1px 2px 4px rgba(29, 233, 182, 0.12), 1px 4px 8px rgba(29, 233, 182, 0.24);
+	border: 0;
+	outline: none;
 }
 .wrapper {
 	display: flex;
@@ -37,6 +15,32 @@ input[type='text'], textarea {
 	margin: 64px 0 0 0;
 	overflow: auto;
 }
+.wrapper .Button {
+	appearance: none;
+	background-color: rgb(29, 233, 182);
+	border-radius: 20px;
+	box-shadow: 1px 2px 4px rgba(29, 233, 182, 0.12);
+	color: white;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 40px;
+	max-width: 300px;
+	padding: 0 16px;
+	text-align: center;
+	text-transform: uppercase;
+	transition: background-color 0.25s, box-shadow 0.25s
+}
+.wrapper .Button:hover {
+	box-shadow: 1px 2px 4px rgba(29, 233, 182, 0.12), 1px 4px 8px rgba(29, 233, 182, 0.24);
+}
+
+.NewNote {
+	align-self: center;
+	bottom: 16px;
+	position: fixed;
+	z-index: 2
+}
+
 
 .Header {
 	color: white;
@@ -104,17 +108,9 @@ input[type='text'], textarea {
 	white-space: pre
 }
 .Notes .NoteDelete {
-	align-items: center;
-	border-radius: 24px;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	height: 48px;
 	position: absolute;
 	right: 16px;
 	top: 16px;
-	transition: background-color 0.25s;
-	width: 48px;
 	z-index: 1
 }
 .Notes .NoteCopy {
@@ -146,22 +142,22 @@ input[type='text'], textarea {
 	padding: 16px
 }
 .AddNote .Back {
-	align-items: center;
 	border-radius: 50%;
 	cursor: pointer;
 	left: 9px;
-	display: flex;
-	flex-flow: column;
-	height: 48px;
-	justify-content: center;
+	height: 24px;
+	padding: 12px;
 	position: fixed;
 	top: 9px;
 	transition: background-color 0.25s;
-	width: 48px;
+	width: 24px;
 	z-index: 4
 }
-.AddNote .Back:focus, .AddNote .Back:hover {
-	background-color: rgba(0, 0, 0, 0.05)
+.AddNote .Back {
+	left: 9px;
+	position: fixed;
+	top: 9px;
+	z-index: 4
 }
 .AddNote .Title, .AddNote .Text {
 	appearance: none;
@@ -184,21 +180,7 @@ input[type='text'], textarea {
 	resize: none
 }
 .AddNote .Submit {
-	align-self: center;
-		appearance: none;
-	background-color: rgb(29, 233, 182);
-	border: 0;
-	border-radius: 20px;
-	box-shadow: 1px 2px 4px rgba(29, 233, 182, 0.12);
-	color: white;
-	cursor: pointer;
-	font-size: 14px;
-	line-height: 40px;
-	max-width: 300px;
-	padding: 0 16px;
-	text-align: center;
-	text-transform: uppercase;
-	transition: background-color 0.25s, box-shadow 0.25s
+	align-self: center
 }
 .AddNote .Submit:hover {
 	box-shadow: 1px 2px 4px rgba(29, 233, 182, 0.12), 1px 4px 8px rgba(29, 233, 182, 0.24)
@@ -211,12 +193,20 @@ input[type='text'], textarea {
 }
 
 
-.Notes, .AddNote {
+.AddNote, .Notes {
 	margin: 0 auto;
 	max-width: 1000px;
 	width: calc(100% - 32px)
 }
-
+.AddNote .Back,
+.Notes .NoteDelete {
+	border-radius: 50%;
+	cursor: pointer;
+	height: 24px;
+	padding: 12px;
+	transition: background-color 0.25s;
+	width: 24px
+}
 .AddNote .Back:hover,
 .Notes .NoteDelete:hover {
 	background-color: rgba(0, 0, 0, 0.05)

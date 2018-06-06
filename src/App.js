@@ -1,7 +1,6 @@
 import React from 'react';
 
 import AddNote from './components/AddNote';
-import Button from './components/Button';
 import Notes from './components/Notes';
 import Titlebar from './components/Titlebar';
 
@@ -41,10 +40,11 @@ class App extends React.Component {
 	};
 
 	deleteNote = event => {
-		const index = event.target.parentNode.getAttribute('index');
+		const index = event.target.parentElement.getAttribute('id');
 		const {notes} = this.state;
 		notes.splice(index, 1);
 		this.setState({notes});
+		console.log("Удалена запись: " + index);
 	};
 
 	addNote = event => {
@@ -61,6 +61,7 @@ class App extends React.Component {
 
 	cancelNote = () => {
 		this.setState({add: false});
+		localStorage.setItem('newNote', '');
 	};
 
 	render() {
@@ -74,9 +75,11 @@ class App extends React.Component {
 					</div>
 				) : (
 					<div className='wrapper'>
-						<Button
-							action={this.newNote}
-							title='Новая запись'
+						<input
+							className='Button NewNote'
+							onClick={this.newNote}
+							type='submit'
+							value='Новая запись'
 						/>
 						<Notes data={notes} delete={this.deleteNote} />
 					</div>
