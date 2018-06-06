@@ -67,7 +67,6 @@ class AddNote extends React.Component {
 							alt='Удалить запись'
 							className='NoteDelete'
 							src='/assets/icons/cross.svg'
-							title='Нажмите, чтобы удалить запись'
 						/>
 					</a>
 				) : (

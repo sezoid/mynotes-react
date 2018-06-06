@@ -7,14 +7,13 @@ const NoteItem = props => (
 		<span className='NoteDate'>{props.date}</span>
 		<p className='NoteText'>{props.text}</p>
 		<CopyToClipboard text={'[' + props.date + '] ' + props.title + '\n\n' + props.text}>
-			<div className='NoteCopy' title='Нажмите, чтобы скопировать запись'>Копировать</div>
+			<div className='NoteCopy'>Копировать</div>
 		</CopyToClipboard>
 		<img
 			alt='Удалить запись'
 			className='NoteDelete'
 			onClick={props.delete}
 			src='/assets/icons/cross.svg'
-			title='Нажмите, чтобы удалить запись'
 		/>
 	</li>
 );

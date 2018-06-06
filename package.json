@@ -2,7 +2,7 @@
   "name": "mynotes-react",
   "version": "1.0.0",
   "private": false,
-  "repo": "https://github.com/sezoid/mynotes-react",
+  "repository": "https://github.com/sezoid/mynotes-react",
   "dependencies": {
     "react": "^16.4.0",
     "react-copy-to-clipboard": "^5.0.1",
