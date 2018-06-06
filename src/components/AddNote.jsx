@@ -56,7 +56,7 @@ class AddNote extends React.Component {
 					></textarea>
 					<input
 						className='Button Submit'
-						disabled={text.length === 0 && title.length === 0 ? 'disabled' : null}
+						disabled={text.length === 0 || title.length === 0 ? 'disabled' : null}
 						type='submit'
 						value='Добавить запись'
 					/>
