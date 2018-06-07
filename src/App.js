@@ -26,8 +26,9 @@ class App extends React.Component {
 	};
 
 	componentDidMount() {
+		const {notes} = this.state;
 		this.setState({
-			add: this.state.notes.length === 0 ? true : false
+			add: notes.length === 0 ? true : false
 		});
 	};
 
@@ -36,7 +37,8 @@ class App extends React.Component {
 	};
 
 	newNote = () => {
-		this.setState({add: !this.state.add});
+		const {add} = this.state;
+		this.setState({add: !add});
 	};
 
 	deleteNote = event => {
@@ -49,11 +51,12 @@ class App extends React.Component {
 
 	addNote = event => {
 		event.preventDefault();
+		const {notes} = this.state;
 		const newNote = JSON.parse(localStorage.getItem('newNote'));
 
 		this.setState({
 			add: false,
-			notes: this.state.notes.concat(newNote)
+			notes: [...notes, newNote]
 		});
 
 		localStorage.setItem('newNote', '');

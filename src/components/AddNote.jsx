@@ -61,7 +61,7 @@ class AddNote extends React.Component {
 						value='Добавить запись'
 					/>
 				</form>
-				{notes.length !== 0 && notes !== null && notes !== undefined && notes !== [] ? (
+				{notes.length !== 0 || notes !== null || notes !== undefined || notes !== [] ? (
 					<a className='Back' onClick={this.props.cancel}>
 						<img
 							alt='Удалить запись'

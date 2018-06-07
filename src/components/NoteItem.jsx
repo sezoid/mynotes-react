@@ -6,7 +6,7 @@ const NoteItem = props => (
 		<h1 className='NoteTitle'>{props.title}</h1>
 		<span className='NoteDate'>{props.date}</span>
 		<p className='NoteText'>{props.text}</p>
-		<CopyToClipboard text={'[' + props.date + '] ' + props.title + '\n\n' + props.text}>
+		<CopyToClipboard text={`[${props.date}] ${props.title} \n\n ${props.text}`}>
 			<div className='NoteCopy'>Копировать</div>
 		</CopyToClipboard>
 		<img
