@@ -8,6 +8,7 @@ const Notes = props => (
 			<NoteItem
 				date={note.date}
 				delete={props.delete}
+				lang={props.lang}
 				index={index}
 				key={index}
 				text={note.text}

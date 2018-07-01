@@ -1,7 +1,9 @@
+import * as Language from './lang.json';
+
 class Utils extends (Object) {
-	static Time(eternity) {
+	static Time(eternity, lang) {
 		const unix = new Date(eternity),
-			months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
+			months = Language[lang].months,
 			month = months[unix.getMonth()],
 			year = unix.getFullYear();
 		let date, day, hour, min;
@@ -17,8 +19,13 @@ class Utils extends (Object) {
 			min = unix.getMinutes();
 
 		unix === null ?
-			date = 'Загрузка…' :
-			date = `${day} ${month} ${year}, ${hour}:${min}`;
+			date = Language[lang].loading :
+			date = Language[lang].date_format
+				.replace('day', day)
+				.replace('hour', hour)
+				.replace('min', min)
+				.replace('month', month)
+				.replace('year', year)
 
 		return date;
 	};

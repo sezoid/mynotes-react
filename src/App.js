@@ -5,7 +5,7 @@ import Notes from './components/Notes';
 import Settings from './components/Settings';
 import Titlebar from './components/Titlebar';
 
-import Utils from './utils.js';
+import * as Language from './lang.json';
 
 import './App.css';
 
@@ -13,17 +13,18 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const notes = JSON.parse(localStorage.getItem('notes'));
-		let initState = [];
-		if (notes !== null && notes !== undefined) {
-			initState = notes;
+		const savedNotes = JSON.parse(localStorage.getItem('notes'));
+		let notes = [];
+		if (savedNotes !== null && savedNotes !== undefined) {
+			notes = savedNotes;
 		} else {
-			initState = [];
+			notes = [];
 		};
 
 		this.state = {
 			activity: 'settings',
-			notes: initState
+			lang: 'en',
+			notes: notes
 		};
 	};
 
@@ -35,7 +36,8 @@ class App extends React.Component {
 	};
 
 	componentDidUpdate() {
-		localStorage.setItem('notes', JSON.stringify(this.state.notes));
+		const {notes} = this.state;
+		localStorage.setItem('notes', JSON.stringify(notes));
 	};
 
 	newNote = () => {
@@ -52,15 +54,15 @@ class App extends React.Component {
 	addNote = event => {
 		event.preventDefault();
 		const {notes} = this.state;
-		const newNote = JSON.parse(localStorage.getItem('newNote'));
 
-		newNote['date'] = Utils.Time(Date.now());
+		const newNote = JSON.parse(localStorage.getItem('newNote'));
+		newNote['date'] = Date.now();
 
 		this.setState({
 			activity: 'default',
 			notes: [...notes, newNote]
 		});
-		
+
 		localStorage.setItem('newNote', '');
 	};
 
@@ -70,13 +72,20 @@ class App extends React.Component {
 	};
 
 	render() {
-		const {activity, notes} = this.state;
+		const {activity, lang, notes} = this.state;
 		return (
 			<div className='App'>
-				<Titlebar title={activity === 'default' ? 'Мои заметки' : (activity === 'settings' ? 'Настройки' : 'Мои заметки')} />
+				<Titlebar title={
+					activity === 'addNote' ?
+						Language[this.state.lang].title_add :
+						(activity === 'settings' ?
+							Language[this.state.lang].title_settings :
+							Language[this.state.lang].title
+						)
+					} />
 				{activity === 'addNote' || notes.length === 0 ? (
 					<div className='wrapper'>
-						<AddNote add={this.addNote} cancel={this.cancelNote} notes={notes} />
+						<AddNote add={this.addNote} cancel={this.cancelNote} lang={lang} notes={notes} />
 					</div>
 				) : (activity === 'settings' ? (
 					<div className='wrapper'>
@@ -84,12 +93,12 @@ class App extends React.Component {
 					</div>
 				) : (
 					<div className='wrapper'>
-						<Notes data={notes} delete={this.deleteNote} />
+						<Notes data={notes} delete={this.deleteNote} lang={lang} />
 						<input
 							className='Button NewNote'
 							onClick={this.newNote}
 							type='submit'
-							value='Новая запись'
+							value={Language[this.state.lang].button_new}
 						/>
 					</div>
 				))}

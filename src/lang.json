@@ -1,14 +1,13 @@
 {
 	"en": {
-		"title": "My notes",
-		"title_add": "New note",
-		"date_format": "`${month} ${day} ${year}, ${hour}:${min}`",
-		"loading": "Loading…",
-		"button_add": "New record",
+		"button_add": "Add record",
+		"button_new": "New record",
 		"button_copy": "Copy",
 		"button_delete": "Remove record",
+		"date_format": "month day year, hour:min",
 		"label_title": "Enter a title",
 		"label_text": "Enter a text",
+		"loading": "Loading…",
 		"months": [
 			"January",
 			"February",
@@ -22,18 +21,20 @@
 			"October",
 			"November",
 			"December"
-		]
+		],
+		"title": "My notes",
+		"title_add": "New note",
+		"title_settings": "Settings"
 	},
 	"ru": {
-		"title": "Мои заметки",
-		"title_add": "Новая заметка",
-		"date_format": "`${day} ${month} ${year}, ${hour}:${min}`",
-		"loading": "Загрузка…",
-		"button_add": "Новая запись",
+		"button_add": "Добавить запись",
+		"button_new": "Новая запись",
 		"button_copy": "Скопировать",
 		"button_delete": "Удалить запись",
+		"date_format": "day month year, hour:min",
 		"label_title": "Введите заголовок",
 		"label_text": "Введите текст",
+		"loading": "Загрузка…",
 		"months": [
 			"января",
 			"февраля",
@@ -47,6 +48,9 @@
 			"октября",
 			"ноября",
 			"декабря"
-		]
+		],
+		"title": "Мои заметки",
+		"title_add": "Новая заметка",
+		"title_settings": "Настройки"
 	}
 }

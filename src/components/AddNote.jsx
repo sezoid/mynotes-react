@@ -1,5 +1,7 @@
 import React from 'react';
 
+import * as Language from '../lang.json';
+
 class AddNote extends React.Component {
 	constructor(props) {
 		super(props);
@@ -29,7 +31,7 @@ class AddNote extends React.Component {
 	};
 
 	render() {
-		const notes = this.props.notes;
+		const {cancel, lang, notes} = this.props;
 		const {text, title} = this.state;
 		return (
 			<div className='AddNote'>
@@ -39,29 +41,29 @@ class AddNote extends React.Component {
 						autoComplete='off'
 						className='Title'
 						onChange={this.onChange}
-						placeholder='Введите заголовок'
+						placeholder={Language[lang].label_title}
 						required
 						type='text'
-						value={this.state.title}
+						value={title}
 					/>
 					<textarea
 						className='Text'
 						rows='5'
 						onChange={this.onChange}
-						placeholder='Введите текст'
+						placeholder={Language[lang].label_text}
 						required
-						value={this.state.text}
+						value={text}
 					></textarea>
 					<input
 						className='Button Submit'
 						disabled={text.length === 0 || title.length === 0 ? 'disabled' : null}
 						type='submit'
-						value='Добавить запись'
+						value={Language[lang].button_add}
 					/>
 				</form>
 				{notes.length !== 0 && notes !== null && notes !== undefined && notes !== [] ? (
-					<a className='Back' onClick={this.props.cancel}>
-						<img alt='Удалить запись' className='NoteDelete' src='/assets/icons/cross.svg' />
+					<a className='Back' onClick={cancel}>
+						<img alt={Language[lang].button_delete} className='NoteDelete' src='/assets/icons/cross.svg' />
 					</a>
 				) : (
 					null
