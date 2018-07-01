@@ -152,9 +152,9 @@ input, textarea {
 	color: white
 }
 .Notes .NoteDate {
-	color: black;
+	color: rgba(0, 0 ,0, 0.64);
 	font-size: 12px;
-	font-weight: 200;
+	font-weight: 300;
 	margin: 0 0 16px 0
 }
 .Notes .NoteDelete {

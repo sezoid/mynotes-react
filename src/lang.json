@@ -1,0 +1,52 @@
+{
+	"en": {
+		"title": "My notes",
+		"title_add": "New note",
+		"date_format": "`${month} ${day} ${year}, ${hour}:${min}`",
+		"loading": "Loading…",
+		"button_add": "New record",
+		"button_copy": "Copy",
+		"button_delete": "Remove record",
+		"label_title": "Enter a title",
+		"label_text": "Enter a text",
+		"months": [
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December"
+		]
+	},
+	"ru": {
+		"title": "Мои заметки",
+		"title_add": "Новая заметка",
+		"date_format": "`${day} ${month} ${year}, ${hour}:${min}`",
+		"loading": "Загрузка…",
+		"button_add": "Новая запись",
+		"button_copy": "Скопировать",
+		"button_delete": "Удалить запись",
+		"label_title": "Введите заголовок",
+		"label_text": "Введите текст",
+		"months": [
+			"января",
+			"февраля",
+			"марта",
+			"апреля",
+			"мая",
+			"июня",
+			"июля",
+			"августа",
+			"сентября",
+			"октября",
+			"ноября",
+			"декабря"
+		]
+	}
+}

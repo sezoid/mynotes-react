@@ -1,18 +1,18 @@
 {
-  "name": "mynotes-react",
-  "version": "1.0.0",
-  "private": false,
-  "repository": "https://github.com/sezoid/mynotes-react",
-  "dependencies": {
-    "react": "^16.4.0",
-    "react-copy-to-clipboard": "^5.0.1",
-    "react-dom": "^16.4.0",
-    "react-scripts": "1.1.4",
-    "reset-css": "^3.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "deploy": "react-scripts build && firebase deploy"
-  }
+	"name": "mynotes-react",
+	"version": "1.0.0",
+	"private": false,
+	"repository": "https://github.com/sezoid/mynotes-react",
+	"dependencies": {
+		"react": "^16.4.0",
+		"react-copy-to-clipboard": "^5.0.1",
+		"react-dom": "^16.4.0",
+		"react-scripts": "1.1.4",
+		"reset-css": "^3.0.0"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"deploy": "react-scripts build && firebase deploy"
+	}
 }

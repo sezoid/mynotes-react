@@ -1,12 +1,10 @@
 import React from 'react';
 
-import Utils from '../utils.js';
-
 class AddNote extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			date: Utils.Time(Date.now()),
+			date: '',
 			text: '',
 			title: ''
 		};
@@ -61,13 +59,9 @@ class AddNote extends React.Component {
 						value='Добавить запись'
 					/>
 				</form>
-				{notes.length !== 0 || notes !== null || notes !== undefined || notes !== [] ? (
+				{notes.length !== 0 && notes !== null && notes !== undefined && notes !== [] ? (
 					<a className='Back' onClick={this.props.cancel}>
-						<img
-							alt='Удалить запись'
-							className='NoteDelete'
-							src='/assets/icons/cross.svg'
-						/>
+						<img alt='Удалить запись' className='NoteDelete' src='/assets/icons/cross.svg' />
 					</a>
 				) : (
 					null
