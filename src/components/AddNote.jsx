@@ -61,14 +61,9 @@ class AddNote extends React.Component {
 						value={Language[lang].button_add}
 					/>
 				</form>
-				{notes.length !== 0 && notes !== null && notes !== undefined && notes !== [] ? (
-					<a className='Back' onClick={cancel}>
-						<img alt={Language[lang].button_back} src='/assets/icons/back.svg' />
-					</a>
-				) : (
-					null
-				)}
-
+				<a className='Back' onClick={cancel}>
+					<img alt={Language[lang].button_back} src='/assets/icons/back.svg' />
+				</a>
 			</div>
 		);
 	};

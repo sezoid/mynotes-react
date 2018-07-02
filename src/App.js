@@ -100,7 +100,7 @@ class App extends React.Component {
 	render() {
 		const {activity, lang, notes, theme} = this.state;
 		return (
-			<div className='App'>
+			<div className='App' data-theme={theme}>
 				<Titlebar title={
 					activity === 'addNote' ?
 						Language[this.state.lang].title_add :
