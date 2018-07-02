@@ -31,7 +31,7 @@ class AddNote extends React.Component {
 	};
 
 	render() {
-		const {cancel, lang, notes} = this.props;
+		const {cancel, lang} = this.props;
 		const {text, title} = this.state;
 		return (
 			<div className='AddNote'>

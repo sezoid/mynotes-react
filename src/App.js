@@ -114,7 +114,7 @@ class App extends React.Component {
 						<AddNote
 							add={this.addNote}
 							cancel={this.cancelNote}
-							lang={lang} notes={notes}
+							lang={lang}
 						/>
 					</div>
 				) : (activity === 'settings' ? (
