@@ -37,13 +37,6 @@ class App extends React.Component {
 		};
 	};
 
-	componentDidMount() {
-		const {notes} = this.state;
-		this.setState({
-			activity: notes.length === 0 ? 'addNote' : 'default'
-		});
-	};
-
 	componentDidUpdate() {
 		const {notes} = this.state;
 		localStorage.setItem('notes', JSON.stringify(notes));
@@ -89,7 +82,6 @@ class App extends React.Component {
 		localStorage.setItem('settings', JSON.stringify([{'lang': event.target.value, 'theme': theme}]));
 
 		this.setState({lang: event.target.value});
-		console.log(event.currentTarget);
 	};
 
 	setTheme = event => {
