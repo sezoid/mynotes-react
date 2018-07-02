@@ -117,7 +117,7 @@ class App extends React.Component {
 							Language[this.state.lang].title
 						)
 					} />
-				{activity === 'addNote' || notes.length === 0 ? (
+				{activity === 'addNote' ? (
 					<div className='wrapper'>
 						<AddNote
 							add={this.addNote}
