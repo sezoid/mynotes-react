@@ -21,10 +21,19 @@ class App extends React.Component {
 			notes = [];
 		};
 
+		const savedSettings = JSON.parse(localStorage.getItem('settings'));
+		let settings = [{'lang': 'en', 'theme': 'default'}];
+		if (savedSettings !== null && savedSettings !== undefined) {
+			settings = savedSettings;
+		} else {
+			settings = [{'lang': 'en', 'theme': 'default'}];
+		};
+
 		this.state = {
-			activity: 'settings',
-			lang: 'en',
-			notes: notes
+			activity: 'default',
+			lang: settings[0].lang,
+			notes: notes,
+			theme: settings[0].theme
 		};
 	};
 
@@ -42,6 +51,10 @@ class App extends React.Component {
 
 	newNote = () => {
 		this.setState({activity: 'addNote'});
+	};
+
+	settings = () => {
+		this.setState({activity: 'settings'});
 	};
 
 	deleteNote = event => {
@@ -71,8 +84,29 @@ class App extends React.Component {
 		localStorage.setItem('newNote', '');
 	};
 
+	setLanguage = event => {
+		const {theme} = this.state;
+		localStorage.setItem('settings', JSON.stringify([{'lang': event.target.value, 'theme': theme}]));
+
+		this.setState({lang: event.target.value});
+		console.log(event.currentTarget);
+	};
+
+	setTheme = event => {
+		const {lang} = this.state;
+		localStorage.setItem('settings', JSON.stringify([{'lang': lang, 'theme': event.target.value}]));
+
+		this.setState({theme: event.target.value});
+	};
+
+	onUpdateSettings = () => {
+		const {lang, theme} = this.state;
+		console.log(JSON.stringify({'lang': lang, 'theme': theme}));
+		localStorage.setItem('settings', JSON.stringify([{'lang': lang, 'theme': theme}]));
+	};
+
 	render() {
-		const {activity, lang, notes} = this.state;
+		const {activity, lang, notes, theme} = this.state;
 		return (
 			<div className='App'>
 				<Titlebar title={
@@ -85,15 +119,28 @@ class App extends React.Component {
 					} />
 				{activity === 'addNote' || notes.length === 0 ? (
 					<div className='wrapper'>
-						<AddNote add={this.addNote} cancel={this.cancelNote} lang={lang} notes={notes} />
+						<AddNote
+							add={this.addNote}
+							cancel={this.cancelNote}
+							lang={lang} notes={notes}
+						/>
 					</div>
 				) : (activity === 'settings' ? (
 					<div className='wrapper'>
-						<Settings />
+						<Settings
+							actions={[this.setLanguage, this.setTheme, this.onUpdateSettings]}
+							cancel={this.cancelNote}
+							lang={lang}
+							theme={theme}
+						/>
 					</div>
 				) : (
 					<div className='wrapper'>
-						<Notes data={notes} delete={this.deleteNote} lang={lang} />
+						<Notes
+							data={notes}
+							delete={this.deleteNote}
+							lang={lang}
+						/>
 						<input
 							className='Button NewNote'
 							onClick={this.newNote}
@@ -102,6 +149,14 @@ class App extends React.Component {
 						/>
 					</div>
 				))}
+				{activity !== 'settings' ?
+					<img
+						alt={Language[lang].button_settings}
+						className='Preferences'
+						onClick={this.settings}
+						src='/assets/icons/settings.svg'
+					/> : null
+				}
 			</div>
 		);
 	};

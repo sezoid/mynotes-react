@@ -87,12 +87,6 @@ input, textarea {
 	flex-flow: column nowrap;
 	padding: 16px
 }
-.AddNote .Back {
-	left: 9px;
-	position: fixed;
-	top: 9px;
-	z-index: 4
-}
 .AddNote .Submit {
 	align-self: center
 }
@@ -172,8 +166,7 @@ input, textarea {
 	margin: 0 0 16px 0;
 	overflow: hidden;
 	padding: 16px;
-	position: relative;
-	transition: box-shadow 0.25s
+	position: relative
 }
 .Notes .NoteTitle {
 	color: black;
@@ -192,14 +185,42 @@ input, textarea {
 	white-space: pre-wrap
 }
 
+.Settings .card {
+	background-color: white;
+	border-radius: 4px;
+	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.12);
+	margin: 16px;
+	overflow: hidden;
+	padding: 16px 16px 0 16px;
+	position: relative
+}
+.Settings li {
+	display: flex;
+	flex-flow: row nowrap;
+	margin: 0 0 16px 0
+}
+.Settings li select {
+	margin: 0 0 0 auto
+}
 
-.AddNote, .Notes {
+.AddNote,
+.Notes,
+.Settings {
 	margin: 0 auto;
 	max-width: 1000px;
 	width: calc(100% - 32px)
 }
 .AddNote .Back,
-.Notes .NoteDelete {
+.Settings .Back {
+	left: 9px;
+	position: fixed;
+	top: 9px;
+	z-index: 4
+}
+.AddNote .Back,
+.Settings .Back,
+.Notes .NoteDelete,
+.Preferences {
 	border-radius: 50%;
 	cursor: pointer;
 	height: 24px;
@@ -209,7 +230,15 @@ input, textarea {
 	width: 24px
 }
 .AddNote .Back:hover,
-.Notes .NoteDelete:hover {
+.Settings .Back:hover,
+.Notes .NoteDelete:hover,
+.Preferences:hover {
 	background-color: rgba(0, 0, 0, 0.03);
 	opacity: 1
+}
+.Preferences {
+	right: 9px;
+	position: fixed;
+	top: 9px;
+	z-index: 4
 }

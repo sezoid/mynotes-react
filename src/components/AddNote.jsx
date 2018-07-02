@@ -63,7 +63,7 @@ class AddNote extends React.Component {
 				</form>
 				{notes.length !== 0 && notes !== null && notes !== undefined && notes !== [] ? (
 					<a className='Back' onClick={cancel}>
-						<img alt={Language[lang].button_delete} className='NoteDelete' src='/assets/icons/cross.svg' />
+						<img alt={Language[lang].button_back} src='/assets/icons/back.svg' />
 					</a>
 				) : (
 					null

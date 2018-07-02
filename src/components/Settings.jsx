@@ -1,35 +1,29 @@
 import React from 'react';
 
-class Settings extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			lang: 'en',
-			theme: 'default'
-		};
-	};
+import * as Language from '../lang.json';
 
-	componentDidUpdate() {
-		localStorage.setItem('settings', JSON.stringify(this.state));
-	};
-
-	render() {
-		return (
-			<div className='Settings'>
-				<label htmlFor='lang'>Язык интерфейса: </label>
-				<select name='lang'>
-					<option defaultValue value='en'>English</option>
+const Settings = props => (
+	<div className='Settings'>
+		<ul className='card'>
+			<li>
+				<label htmlFor='lang'>{Language[props.lang].settings_lang}</label>
+				<select name='lang' onChange={props.actions[0]} value={props.lang}>
+					<option value='en'>English</option>
 					<option value='ru'>Русский</option>
 				</select>
-				<br />
-				<label htmlFor='theme'>Тема: </label>
-				<select name='theme'>
-					<option defaultValue value='default'>Светлая</option>
-					<option value='dark'>Темная</option>
+			</li>
+			<li>
+				<label htmlFor='theme'>{Language[props.lang].settings_theme}</label>
+				<select name='theme' onChange={props.actions[1]} value={props.theme}>
+					<option value='default'>{Language[props.lang].settings_themes[0]}</option>
+					<option value='dark'>{Language[props.lang].settings_themes[1]}</option>
 				</select>
-			</div>
-		);
-	};
-};
+			</li>
+		</ul>
+		<a className='Back' onClick={props.cancel}>
+			<img alt={Language[props.lang].button_back} src='/assets/icons/back.svg' />
+		</a>
+	</div>
+);
 
 export default Settings;

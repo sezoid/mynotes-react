@@ -1,6 +1,7 @@
 {
 	"en": {
 		"button_add": "Add record",
+		"button_back": "Back",
 		"button_new": "New record",
 		"button_copy": "Copy",
 		"button_delete": "Remove record",
@@ -22,12 +23,16 @@
 			"November",
 			"December"
 		],
+		"settings_lang": "Language",
+		"settings_theme": "Theme",
+		"settings_themes": ["Light", "Dark"],
 		"title": "My notes",
 		"title_add": "New note",
 		"title_settings": "Settings"
 	},
 	"ru": {
 		"button_add": "Добавить запись",
+		"button_back": "Назад",
 		"button_new": "Новая запись",
 		"button_copy": "Скопировать",
 		"button_delete": "Удалить запись",
@@ -49,6 +54,9 @@
 			"ноября",
 			"декабря"
 		],
+		"settings_lang": "Язык",
+		"settings_theme": "Тема",
+		"settings_themes": ["Светлая", "Темная"],
 		"title": "Мои заметки",
 		"title_add": "Новая заметка",
 		"title_settings": "Настройки"
