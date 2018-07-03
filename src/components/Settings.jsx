@@ -20,7 +20,7 @@ const Settings = props => (
 				</select>
 			</li>
 		</ul>
-		<a className='Back' onClick={props.cancel}>
+		<a className='Back' onClick={props.actions[2]}>
 			<img alt={Language[props.lang].button_back} src='/assets/icons/back.svg' />
 		</a>
 	</div>

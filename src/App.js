@@ -40,16 +40,12 @@ class App extends React.Component {
 	newNote = () => {
 		this.setState({activity: 'addNote'});
 	};
-
 	settings = () => {
 		this.setState({activity: 'settings'});
 	};
-
-	deleteNote = event => {
-		const index = event.target.parentElement.getAttribute('id'),
-			{notes} = this.state;
-		notes.splice(index, 1);
-		this.setState({notes});
+	cancel = () => {
+		this.setState({activity: 'default'});
+		localStorage.setItem('newNote', '');
 	};
 
 	addNote = event => {
@@ -64,84 +60,54 @@ class App extends React.Component {
 		});
 		localStorage.setItem('newNote', '');
 	};
-
-	cancelNote = () => {
-		this.setState({activity: 'default'});
-		localStorage.setItem('newNote', '');
+	deleteNote = event => {
+		const index = event.target.parentElement.getAttribute('id'),
+			{notes} = this.state;
+		notes.splice(index, 1);
+		this.setState({notes});
 	};
 
 	setLanguage = event => {
 		const {theme} = this.state;
-		localStorage.setItem('settings', JSON.stringify([{'lang': event.target.value, 'theme': theme}]));
 		this.setState({lang: event.target.value});
+		localStorage.setItem('settings', JSON.stringify([{'lang': event.target.value, 'theme': theme}]));
 	};
-
 	setTheme = event => {
 		const {lang} = this.state;
-		localStorage.setItem('settings', JSON.stringify([{'lang': lang, 'theme': event.target.value}]));
-
 		this.setState({theme: event.target.value});
-	};
-
-	onUpdateSettings = () => {
-		const {lang, theme} = this.state;
-		localStorage.setItem('settings', JSON.stringify([{'lang': lang, 'theme': theme}]));
+		localStorage.setItem('settings', JSON.stringify([{'lang': lang, 'theme': event.target.value}]));
 	};
 
 	render() {
 		const {activity, lang, notes, theme} = this.state;
 		return (
 			<div className='App' data-theme={theme}>
-				<Titlebar title={
-					activity === 'addNote' ?
-						Language[lang].title_add :
-						(activity === 'settings' ?
-							Language[lang].title_settings :
-							Language[lang].title
-						)
-					} />
+				<Titlebar title={activity === 'addNote' ?
+					Language[lang].title_add : activity === 'settings' ?
+						Language[lang].title_settings : Language[lang].title
+				} />
+
 				{activity === 'addNote' ? (
 					<div className='wrapper'>
-						<AddNote
-							actions={[this.addNote, this.cancelNote]}
-							lang={lang}
-						/>
+						<AddNote actions={[this.addNote, this.cancel]} lang={lang} />
 					</div>
 				) : (activity === 'settings' ? (
 					<div className='wrapper'>
-						<Settings
-							actions={[this.setLanguage, this.setTheme, this.onUpdateSettings]}
-							cancel={this.cancelNote}
-							lang={lang}
-							theme={theme}
-						/>
+						<Settings actions={[this.setLanguage, this.setTheme, this.cancel]} lang={lang} theme={theme} />
 					</div>
 				) : (
 					<div className='wrapper'>
-						<Notes
-							data={notes}
-							delete={this.deleteNote}
-							lang={lang}
-						/>
-						<input
-							className='Button NewNote'
-							onClick={this.newNote}
-							type='submit'
-							value={Language[lang].button_new}
-						/>
+						<Notes data={notes} delete={this.deleteNote} lang={lang} />
+						<input className='Button NewNote' onClick={this.newNote} type='submit' value={Language[lang].button_new} />
 					</div>
 				))}
+
 				{activity !== 'settings' ?
-					<img
-						alt={Language[lang].button_settings}
-						className='Preferences'
-						onClick={this.settings}
-						src='/assets/icons/settings.svg'
-					/> : null
+					<img alt={Language[lang].button_settings} className='Preferences' onClick={this.settings} src='/assets/icons/settings.svg' /> : null
 				}
 			</div>
 		);
 	};
-}
+};
 
 export default App;
