@@ -17,25 +17,16 @@ class AddNote extends React.Component {
 	};
 
 	onChange = event => {
-		const element = event.target;
-
-		element.className === 'Title' ? (
-			this.setState({
-				title: element.value
-			})
-		) : (
-			this.setState({
-				text: element.value
-			})
-		)
+		const input = event.target;
+		input.className === 'Title' ? this.setState({title: input.value}) : this.setState({text: input.value})
 	};
 
 	render() {
-		const {cancel, lang} = this.props;
-		const {text, title} = this.state;
+		const {actions, lang} = this.props,
+			{text, title} = this.state;
 		return (
 			<div className='AddNote'>
-				<form onSubmit={this.props.add}>
+				<form onSubmit={actions[0]}>
 					<input
 						autoFocus={true}
 						autoComplete='off'
@@ -53,7 +44,7 @@ class AddNote extends React.Component {
 						placeholder={Language[lang].label_text}
 						required
 						value={text}
-					></textarea>
+					/>
 					<input
 						className='Button Submit'
 						disabled={text.length === 0 || title.length === 0 ? 'disabled' : null}
@@ -61,7 +52,7 @@ class AddNote extends React.Component {
 						value={Language[lang].button_add}
 					/>
 				</form>
-				<a className='Back' onClick={cancel}>
+				<a className='Back' onClick={actions[1]}>
 					<img alt={Language[lang].button_back} src='/assets/icons/back.svg' />
 				</a>
 			</div>

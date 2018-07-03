@@ -1,28 +1,28 @@
 html, body {
 	font-family: 'Roboto', sans-serif;
-	overflow: hidden
+	overflow: hidden;
+	user-select: none
 }
-input, textarea {
+.App input,
+.App textarea {
 	appearance: none;
 	border: 0;
 	border-radius: 0;
 	font-family: 'Roboto', sans-serif;
 	outline: none
 }
-
 .App {
 	background-color: #F6F6F6;
 	color: rgba(0, 0, 0, 0.64)
 }
-
-.wrapper {
+.App .wrapper {
 	display: flex;
 	flex-flow: column nowrap;
 	height: calc(100vh - 64px);
 	margin: 64px 0 0 0;
 	overflow: auto
 }
-.wrapper .Button {
+.App .wrapper .Button {
 	appearance: none;
 	background-color: rgb(29, 233, 182);
 	border-radius: 4px;
@@ -37,20 +37,16 @@ input, textarea {
 	text-transform: uppercase;
 	transition: background-color 0.25s, box-shadow 0.25s
 }
-.wrapper .Button:hover {
+.App .wrapper .Button:hover {
 	box-shadow: 1px 2px 4px rgba(29, 233, 182, 0.24), 1px 4px 8px rgba(29, 233, 182, 0.36);
 }
-
-
-.NewNote {
+.App .NewNote {
 	align-self: center;
 	bottom: 16px;
 	position: fixed;
 	z-index: 2
 }
-
-
-.Header {
+.App .Header {
 	left: 0;
 	line-height: 64px;
 	padding: 0 32px;
@@ -59,13 +55,13 @@ input, textarea {
 	top: 0;
 	z-index: 3
 }
-.HeaderTitle {
+.App .HeaderTitle {
 	color: black;
 	font-size: 18px;
 	font-weight: 400;
 	text-align: center
 }
-.HeaderTitle:before {
+.App .HeaderTitle:before {
 	background-color: white;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 	content: '';
@@ -76,12 +72,10 @@ input, textarea {
 	top: 0;
 	z-index: -1
 }
-
-
-.AddNote {
+.App .AddNote {
 	padding: 16px
 }
-.AddNote form {
+.App .AddNote form {
 	background-color: white;
 	border-radius: 4px;
 	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.12);
@@ -89,20 +83,21 @@ input, textarea {
 	flex-flow: column nowrap;
 	padding: 16px
 }
-.AddNote .Submit {
+.App .AddNote .Submit {
 	align-self: center
 }
-.AddNote .Submit:hover {
+.App .AddNote .Submit:hover {
 	box-shadow: 1px 2px 4px rgba(29, 233, 182, 0.12), 1px 4px 8px rgba(29, 233, 182, 0.24)
 }
-.AddNote .Submit:disabled {
+.App .AddNote .Submit:disabled {
 	cursor: auto;
 	opacity: 0.5
 }
-.AddNote .Submit:hover:disabled {
+.App .AddNote .Submit:hover:disabled {
 	box-shadow: 1px 2px 4px rgba(29, 233, 182, 0.12)
 }
-.AddNote .Title, .AddNote .Text {
+.App .AddNote .Title,
+.App .AddNote .Text {
 	appearance: none;
 	background-color: rgba(0, 0, 0, 0.04);
 	border: 0;
@@ -114,24 +109,25 @@ input, textarea {
 	padding: 8px;
 	outline: none
 }
-.AddNote .Title:focus, .AddNote .Text:focus {
+.App .AddNote .Title:focus,
+.App .AddNote .Text:focus {
 	border-bottom-color: rgb(0, 0, 0, 0.12)
 }
-.AddNote .Title, .AddNote .Title::placeholder {
+.App .AddNote .Title,
+.App .AddNote .Title::placeholder {
 	color: rgba(0, 0, 0, 0.64);
 	font-size: 17px
 }
-.AddNote .Text, .AddNote .Text::placeholder {
+.App .AddNote .Text,
+.App .AddNote .Text::placeholder {
 	color: rgba(0, 0, 0, 0.64);
 	font-size: 16px;
 	resize: none
 }
-
-
-.Notes {
+.App .Notes {
 	padding: 16px 16px 56px 16px
 }
-.Notes .NoteCopy {
+.App .Notes .NoteCopy {
 	border-radius: 4px;
 	color: rgb(29, 233, 182);
 	cursor: pointer;
@@ -142,24 +138,24 @@ input, textarea {
 	text-transform: uppercase;
 	transition: background-color 0.25s, box-shadow 0.25s, color 0.25s
 }
-.Notes .NoteCopy:hover {
+.App .Notes .NoteCopy:hover {
 	background-color: rgb(29, 233, 182);
 	box-shadow: 1px 2px 4px rgba(29, 233, 182, 0.12), 1px 4px 8px rgba(29, 233, 182, 0.24);
 	color: white
 }
-.Notes .NoteDate {
+.App .Notes .NoteDate {
 	color: rgba(0, 0 ,0, 0.64);
 	font-size: 12px;
 	font-weight: 300;
 	margin: 0 0 16px 0
 }
-.Notes .NoteDelete {
+.App .Notes .NoteDelete {
 	position: absolute;
 	right: 16px;
 	top: 16px;
 	z-index: 1
 }
-.Notes .NoteItem {
+.App .Notes .NoteItem {
 	background-color: white;
 	border-radius: 4px;
 	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.12);
@@ -170,7 +166,7 @@ input, textarea {
 	padding: 16px;
 	position: relative
 }
-.Notes .NoteTitle {
+.App .Notes .NoteTitle {
 	color: black;
 	font-size: 18px;
 	font-weight: 300;
@@ -178,7 +174,7 @@ input, textarea {
 	margin: 8px 0;
 	width: calc(100% - 48px)
 }
-.Notes .NoteText {
+.App .Notes .NoteText {
 	color: rgba(0, 0, 0, 0.64);
 	font-size: 16px;
 	font-weight: 300;
@@ -186,8 +182,7 @@ input, textarea {
 	margin: 6px 0;
 	white-space: pre-wrap
 }
-
-.Settings .card {
+.App .Settings .card {
 	background-color: white;
 	border-radius: 4px;
 	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.12);
@@ -196,33 +191,53 @@ input, textarea {
 	padding: 16px 16px 0 16px;
 	position: relative
 }
-.Settings li {
+.App .Settings li {
 	display: flex;
 	flex-flow: row nowrap;
+	line-height: 32px;
 	margin: 0 0 16px 0
 }
-.Settings li select {
-	margin: 0 0 0 auto
+.App .Settings li label {
+	color: rgba(0, 0, 0, 0.87)
+}
+.App .Settings li select {
+	background-color: #F6F6F6;
+	border: none;
+	border-radius: 4px;
+	color: rgba(0, 0, 0, 0.64);
+	cursor: pointer;
+	margin: 0 0 0 auto;
+	outline: none;
+	padding: 0 12px
+}
+.App .Settings li select option {
+	background-color: white
 }
 
-.AddNote,
-.Notes,
-.Settings {
+.App .AddNote,
+.App .Notes,
+.App .Settings {
 	margin: 0 auto;
 	max-width: 1000px;
 	width: calc(100% - 32px)
 }
-.AddNote .Back,
-.Settings .Back {
+.App .AddNote .Back,
+.App .Settings .Back {
 	left: 9px;
 	position: fixed;
 	top: 9px;
 	z-index: 4
 }
-.AddNote .Back,
-.Settings .Back,
-.Notes .NoteDelete,
-.Preferences {
+.App .Preferences {
+	right: 9px;
+	position: fixed;
+	top: 9px;
+	z-index: 4
+}
+.App .AddNote .Back,
+.App .Settings .Back,
+.App .Notes .NoteDelete,
+.App .Preferences {
 	border-radius: 50%;
 	cursor: pointer;
 	height: 24px;
@@ -231,27 +246,13 @@ input, textarea {
 	transition: background-color 0.25s, opacity 0.25s;
 	width: 24px
 }
-.AddNote .Back:hover,
-.Settings .Back:hover,
-.Notes .NoteDelete:hover,
-.Preferences:hover {
+.App .AddNote .Back:hover,
+.App .Settings .Back:hover,
+.App .Notes .NoteDelete:hover,
+.App .Preferences:hover {
 	background-color: rgba(0, 0, 0, 0.03);
 	opacity: 1
 }
-.Preferences {
-	right: 9px;
-	position: fixed;
-	top: 9px;
-	z-index: 4
-}
-
-
-
-
-
-
-
-
 
 
 /* DARK THEME */
@@ -270,7 +271,8 @@ input, textarea {
 	background-color: #252525;
 	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.12)
 }
-.App[data-theme='dark'] .AddNote .Title, .App[data-theme='dark'] .AddNote .Text {
+.App[data-theme='dark'] .AddNote .Title,
+.App[data-theme='dark'] .AddNote .Text {
 	appearance: none;
 	background-color: rgba(0, 0, 0, 0.12);
 	border: 0;
@@ -282,13 +284,16 @@ input, textarea {
 	padding: 8px;
 	outline: none
 }
-.App[data-theme='dark'] .AddNote .Title:focus, .App[data-theme='dark'] .AddNote .Text:focus {
+.App[data-theme='dark'] .AddNote .Title:focus,
+.App[data-theme='dark'] .AddNote .Text:focus {
 	border-bottom-color: rgba(255, 255, 255, 0.07)
 }
-.App[data-theme='dark'] .AddNote .Title, .App[data-theme='dark'] .AddNote .Title::placeholder {
+.App[data-theme='dark'] .AddNote .Title,
+.App[data-theme='dark'] .AddNote .Title::placeholder {
 	color: rgba(255, 255, 255, 0.64)
 }
-.App[data-theme='dark'] .AddNote .Text, .App[data-theme='dark'] .AddNote .Text::placeholder {
+.App[data-theme='dark'] .AddNote .Text,
+.App[data-theme='dark'] .AddNote .Text::placeholder {
 	color: rgba(255, 255, 255, 0.64)
 }
 .App[data-theme='dark'] .Notes .NoteDate {
@@ -308,17 +313,25 @@ input, textarea {
 	background-color: #252525;
 	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.12)
 }
+.App[data-theme='dark'] .Settings li label {
+	color: rgba(255, 255, 255, 0.87)
+}
+.App[data-theme='dark'] .Settings li select {
+	background-color: #353535;
+	color: rgba(255, 255, 255, 0.64)
+}
+.App[data-theme='dark'] .Settings li select option {
+	background-color: #404040
+}
 .App[data-theme='dark'] .AddNote .Back:hover,
 .App[data-theme='dark'] .Settings .Back:hover,
 .App[data-theme='dark'] .Notes .NoteDelete:hover,
 .App[data-theme='dark'] .Preferences:hover {
 	background-color: rgba(255, 255, 255, 0.03)
 }
-
 .App[data-theme='dark'] .AddNote .Back,
 .App[data-theme='dark'] .Settings .Back,
 .App[data-theme='dark'] .Notes .NoteDelete,
-.App[data-theme='dark'] .Preferences,
-.App[data-theme='dark'] select {
+.App[data-theme='dark'] .Preferences {
 	filter: invert(100%)
 }
